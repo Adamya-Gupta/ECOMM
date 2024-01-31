@@ -1,0 +1,52 @@
+{% extends 'baseauth.html' %}
+{% block title %}Sign up{% endblock title %}
+{% block bodyforms %}
+
+<div class="card bg-light p-3">
+  {% for message in messages %}
+    
+  <div class="alert alert-{{message.tags}}alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong> 
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  
+  {% endfor %}
+<h3 class="text-dark">Signup</h3>
+    <form action="/auth/signup/" method="POST">{% csrf_token %}
+        
+      
+      
+      <div class="row">
+          
+          <label for="email">Email</label>
+          <div class="">
+            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required/>
+          </div>
+        </div>
+
+        <br>
+
+        <label for="pass1">Password</label>
+        <div class="form-group mt-3">
+          <input type="password" class="form-control" name="pass1" id="pass1" required/>
+        </div>
+
+        <label for="pass2">Confirm Password</label>
+        <div class="form-group mt-3">
+          <input type="password" class="form-control" name="pass2" id="pass2" required/>
+        </div>
+        <br>
+
+
+
+        <button type="submit" class="btn btn-dark">SignUp</button>
+
+        <br>
+        Already User? <a href="/auth/login/">Login</a>
+        <br>
+
+      </form>
+    
+</div>
+
+{% endblock bodyforms %}
